@@ -1,0 +1,85 @@
+
+
+<html>
+  <head>
+    <title>ECEN4213 IoT</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>
+    
+    <script src="../static/parse_data.js"></script>
+
+
+    <!-- callback function for the upbutton pushing event -->
+    <script type=text/javascript> $(function() { $("#upbutton").click(function (event) { $.getJSON('/UpFunction', { },
+    function(data) { }); return false; }); }); </script> 
+
+    <!-- add four more functions for the left, right, down and stop buttons -->
+    <script type=text/javascript> $(function() { $("#leftbutton").click(function (event) { $.getJSON('/LeftFunction', { },
+      function(data) { }); return false; }); }); </script> 
+
+    <script type=text/javascript> $(function() { $("#rightbutton").click(function (event) { $.getJSON('/RightFunction', { },
+      function(data) { }); return false; }); }); </script> 
+
+    <script type=text/javascript> $(function() { $("#downbutton").click(function (event) { $.getJSON('/DownFunction', { },
+      function(data) { }); return false; }); }); </script> 
+
+    <script type=text/javascript> $(function() { $("#stopbutton").click(function (event) { $.getJSON('/StopFunction', { },
+      function(data) { }); return false; }); }); </script> 
+
+
+
+    <style>
+		body {
+			text-align: center;
+		}
+    </style>
+  </head>
+
+  <body>
+
+    <!-- image display module -->
+    <h1>Live Streaming</h1>
+    <img src="{{ url_for('video_feed') }}" height="35%">
+
+    <hr>
+
+    <!-- sensor status display module -->
+    <div>
+      <input style="font-size:40;height:150; width:300;" type = "button" id = "bumpbut" value = "Bumper" /> 
+      <input style="font-size:40;height:150; width:300;" type = "button" id = "dropbut" value = "WheelDrop" /> 
+      <input style="font-size:40;height:150; width:300;" type = "button" id = "cliffbut" value = "Cliff" />
+    </div>
+
+
+    <div>
+      <input style="font-size:40;height:150; width:300;" type = "button" id = "but1" value = "OFF" />
+      <input style="font-size:40;height:150; width:300;" type = "button" id = "but2" value = "OFF" />
+      <input style="font-size:40;height:150; width:300;" type = "button" id = "but3" value = "OFF" />
+    </div>
+      
+
+
+    <!-- D-pad module -->
+    <div>
+        <div>
+          <!-- up button -->
+        <input style="font-size:50;height:200px; width:200px;" type = "button" id = "upbutton" value = "Up" />
+        
+        </div>
+        
+        <div>
+          <!-- left, stop and right button -->
+          <input style="font-size:50;height:200px; width:200px;" type = "button" id = "leftbutton" value = "Left" />
+        <input style="font-size:50;height:200px; width:200px;" type = "button" id = "stopbutton" value = "Stop" />
+        <input style="font-size:50;height:200px; width:200px;" type = "button" id = "rightbutton" value = "Right" />
+        <!-- add two more buttons here -->
+        </div>
+        
+        <div>
+        <!-- down button -->
+        <input style="font-size:50;height:200px; width:200px;" type = "button" id = "downbutton" value = "Down" />
+        </div>
+    </div>
+
+</body>
+</html>

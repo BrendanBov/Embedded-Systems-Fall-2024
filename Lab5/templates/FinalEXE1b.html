@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<!-- define your title  -->
+		<title>ECEN4213 IoT</title>
+		<script>
+			function turn_on_light()
+			{
+				// find out the id where you can to change the image
+				element=document.getElementById('bulb')
+
+				// select an image to display
+				element.src="../static/pic_bulbon.png";
+			}
+
+			function turn_off_light()
+			{
+				// finsh this function ti display another image
+				element=document.getElementById('bulb')
+
+				// select an image to display
+				element.src="../static/pic_bulboff.png";
+			}
+
+			
+		</script>
+
+
+
+
+	</head>
+
+
+	<body>
+		<!-- the description sentence  -->
+		<h1	style="text-align: center">A Light Bulb</h1>
+		<!-- display the image -->
+
+
+		<!-- to adjust the size of the image, you can modify  width="300px" height="400px" -->
+		<center><img id='bulb' alt='A Light Bulb' width="250px" height="400px" src="../static/pic_bulboff.png"></center>
+		
+		<!-- to modify the position and size of the buttons, you can modify  style="position:relative;top:5%;left:30%" 
+		and style="font-size:30;height:100px; width:200px;" -->
+		<div  style="position:relative;top:5%;left:36%">
+	      <input style="font-size:30;height:100px; width:200px;" type = "button" onclick="turn_on_light()" id = "turn_on" value = "Turn On" />
+	      <input style="font-size:30;height:100px; width:200px;" type = "button" onclick="turn_off_light()" id = "turn_off" value = "Turn Off" />
+    	</div>
+	</body>
+</html>
