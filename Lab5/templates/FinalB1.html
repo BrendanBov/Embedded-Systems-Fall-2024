@@ -21,6 +21,13 @@
 		body {
 			text-align: center;
 		}
+    
+    .rotate-image {
+
+    /* Adjust the angle as needed */
+    transform: rotate(180deg);
+    /*margin-top: 100px;*/
+    }
     </style>
   </head>
 
@@ -28,7 +35,7 @@
 
       <!-- image display module -->
       <h1>Live Streaming</h1>
-      <img src="{{ url_for('video_feed') }}" height="35%">
+      <img src="{{ url_for('video_feed') }}" height="35%" class="rotate-image">
 
       <hr>
 
@@ -64,6 +71,7 @@
               var xpos = joy.GetX();
 
               // todo: get the y axis position ypos
+              var ypos = joy.GetY();
     
               const xhttp = new XMLHttpRequest();
     
@@ -71,7 +79,7 @@
               xhttp.setRequestHeader("Content-Type", "application/json");
 
               // todo: format xpos and ypos into a JSON message with the format: {"x": xpos, "y": ypos}
-              const json = {    };
+              const json = {"x": xpos, "y": ypos};
 
               xhttp.send(JSON.stringify(json));
           }

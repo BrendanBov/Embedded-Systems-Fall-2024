@@ -20,8 +20,8 @@
 #include <thread>
 
 using namespace std;
-#define  PORT 8000
-#define  IP "127.0.0.1"
+#define  PORT 8002
+#define  IP "127.0.0.3"
 
 int sock = 0;
 void movement(int, int);
@@ -51,13 +51,14 @@ void read_socket(){
 		printf("received: %c\n",cmd);
 
 		// parse xpos and ypos from the buffer
-
+		int xPos = joystick_x(buffer);
+		int yPos = joystick_y(buffer);
 
 		// use xpos and ypos to control the robot movement
-
+		movement(yPos, xPos);
 		
 		//clean the buffer
-		
+		memset(&buffer, '0', sizeof(buffer));
 	}
 	
 }
@@ -72,15 +73,27 @@ int main(){
 	std::thread  t(read_socket);
 	while(serialDataAvail(kobuki) != -1)
 	{
+		
 		// Read the sensor data.
-
+		readData();
 
 		// Construct an string data like 'b0c0d0', you can use "sprintf" function. You can also define your own data protocal.
-
+		char str[7] = "bXcXdX";
+		if ((cliff > 0x07) || (bumper  > 0x07) || (drop > 0x07))
+		{
+			bumper = 0;
+			cliff = 0;
+			drop = 0;
+		}
+		str[1] = '0' + bumper;
+		str[3] = '0' + cliff;
+		str[5] = '0' + drop;
 
 		// Send the sensor data through the socket
+		send(sock, str, sizeof(str), 0);
 
 		// Clear the buffer
+
 
 		// You can refer to the code in previous labs. 
 	}

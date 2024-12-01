@@ -18,11 +18,18 @@
 
 
 
-    <style>
-		body {
-			text-align: center;
-		}
-    </style>
+      <style>
+        body {
+          text-align: center;
+        }
+        
+        .rotate-image {
+    
+        /* Adjust the angle as needed */
+        transform: rotate(180deg);
+        /*margin-top: 100px;*/
+        }
+        </style>
   </head>
 
   <body>
@@ -81,10 +88,11 @@
           // refer to the POST method used in the HTML code in FinalB1.html to 
           // send the JSON data pjson to the Flask server.
           // todo: set up the POST method
+          xhttp.open('POST', "/phonedata",false);
+          xhttp.setRequestHeader("Content-Type", "application/json");
           if (is_running){
-
           // todo: send pjson; 
-        
+          xhttp.send(JSON.stringify(pjson));
         }
           
       }
